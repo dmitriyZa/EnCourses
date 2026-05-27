@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Английский с [Имя преподавателя]</title>
+    <!-- Подключаем современный шрифт -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Базовые стили */
+        :root {
+            --primary: #4F46E5;       /* Современный индиго */
+            --primary-hover: #4338CA;
+            --secondary: #06B6D4;     /* Бирюзовый акцент */
+            --text-main: #1F2937;     /* Темно-серый для текста */
+            --text-muted: #4B5563;    /* Серый для подзаголовков */
+            --bg-light: #F9FAFB;      /* Светлый фон */
+            --bg-white: #FFFFFF;
+            --radius: 12px;           /* Мягкое скругление */
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-light {
+            background-color: var(--bg-light);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Шапка сайта */
+        .header {
+            background: linear-gradient(135deg, #4F46E5 0%, #2563EB 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Блок "Обо мне" */
+        .about-grid {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .about-image {
+            flex-shrink: 0;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--bg-light);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        /* Форматы занятий */
+        .cards-grid {
+            display: flex;
+            gap: 24px;
+        }
+
+        .card {
+            flex: 1;
+            background: var(--bg-white);
+            padding: 40px 32px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Отзывы */
+        .reviews-grid {
+            display: flex;
+            gap: 24px;
+        }
+
+        .review-item {
+            flex: 1;
+            background: var(--bg-light);
+            padding: 32px;
+            border-radius: var(--radius);
+            position: relative;
+        }
+
+        .review-item::before {
+            content: "“";
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(79, 70, 229, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .review-author {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: block;
+        }
+
+        /* Форма заявки */
+        .cta-container {
+            max-width: 580px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-container p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .main-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #E5E7EB;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        .form-btn {
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+        }
+
+        .form-btn:hover {
+            background: var(--primary-hover);
+            box-shadow: 0 6px 14px rgba(79, 70, 229, 0.3);
+        }
+
+        /* Подвал */
+        .footer {
+            background: #111827;
+            color: #9CA3AF;
+            padding: 32px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.25rem; }
+            .section { padding: 56px 0; }
+            .about-grid, .cards-grid, .reviews-grid {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .about-grid { text-align: center; }
+            .about-image { margin: 0 auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Шапка -->
+<header class="header">
+    <div class="container">
+        <h1>Английский язык</h1>
+        <p>Индивидуальные программы обучения для успешной карьеры, путешествий и уверенного общения</p>
+    </div>
+</header>
+
+
+<!-- О преподавателе -->
+<section class="section">
+    <div class="container">
+        <div class="about-grid">
+            <img src="pic1.png" alt="Фото преподавателя" class="about-image">
+            <div class="about-text">
+                <h3>Давайте знакомиться!</h3>
+                <p>Опытный преподаватель английского языка более 10 лет практики. Помогаю преодолеть языковой барьер с первых занятий.</p>
+                <p>Специализируюсь на направлениях: бизнес-английский, разговорная практика, подготовка к международным экзаменам.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Форматы занятий -->
+<section class="section section-light">
+    <div class="container">
+        <h2>Форматы занятий</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <span class="card-icon">🎯</span>
+                <h3>Индивидуально</h3>
+                <p>Персональная программа, гибкий график и фокус исключительно на ваших целях и темпе обучения.</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">👥</span>
+                <h3>Мини-группы</h3>
+                <p>Живое общение, постоянная языковая практика с единомышленниками и разбор реальных жизненных кейсов.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы -->
+<section class="section">
+    <div class="container">
+        <h2>Отзывы студентов</h2>
+        <div class="reviews-grid">
+            <div class="review-item">
+                <p class="review-text">«Отличный преподаватель! Всего за полгода регулярных занятий удалось полностью избавиться от страха говорить и успешно пройти собеседование в IT-компанию».</p>
+                <span class="review-author">— Алексей, Senior Developer</span>
+            </div>
+            <div class="review-item">
+                <p class="review-text">«Занятия проходят на одном дыхании! Очень много интерактива, современных материалов и никакой скучной зубрежки правил из старых учебников».</p>
+                <span class="review-author">— Марина, маркетолог</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Форма заявки -->
+<section class="section section-light">
+    <div class="container">
+        <div class="cta-container">
+            <h2>Начните говорить уверенно</h2>
+            <p>Запишитесь на бесплатный пробный урок. Мы определим ваш уровень и составим план обучения.</p>
+            <form class="main-form" action="#" method="POST">
+<input type="text" class="form-input" placeholder="Ваше имя" required>
+                <input type="tel" class="form-input" placeholder="Номер телефона / Telegram" required>
+                <button type="submit" class="form-btn">Записаться на урок</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Подвал -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Английский язык. Все права защищены.</p>
+    </div>
+</footer>
+
+</body>
+</html>
